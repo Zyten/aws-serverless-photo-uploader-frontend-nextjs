@@ -1,3 +1,9 @@
+Zyten:
+
+Mock production build (i.e. in a VPS) using nohup. See [Deployment section.](#deployment)
+`
+<hr/>
+
 # Photo Uploader Project
 
 Please note - this is part of an open source project written by me, Joe Gilmore - you can read the full details of this project here
@@ -33,3 +39,21 @@ NEXT_PUBLIC_AWSAPIENDPOINT=https://XXXXXXXX.execute-api.us-east-1.amazonaws.com/
 ```
 
 Run `yarn dev` again and you should be able to login and start to upload photos.
+
+## Deployment
+
+Run the following commands for a _permanent_ deployment that does not require a persistent terminal session.
+
+```
+yarn build
+nohup yarn prod &
+```
+
+- Site should be accessible at http://localhost:5000 / or mapped domain if using a reverse proxy
+- Prod server console logs will be in ./nohup.out
+- To kill nohup prod server process:
+
+```
+jobs
+kill %1
+```
